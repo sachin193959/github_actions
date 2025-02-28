@@ -22,10 +22,24 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v3
+    
+      - name: checkout
+        uses: actions/checkout@v3
+        run: |
+            pwd
+            ls -ltra
       - name: set up JDK 11
         uses: actions/setup-java@v3
         with:
           java-version: '11'
           distribution: 'temurin'
+      - name: Publish on Google Play if required
+        if: inputs.publish == 'GooglePlay'
+        run: echo "Publishing on Google Play"
+      - name: Publish on Firebase if required
+        if: inputs.publish == 'AppTester'
+        run: echo "Publishing on Firebase"
+      - name: Publish on Google Play and Firebase if required
+        if: inputs.publish == 'Both'
+        run: echo "Publishing on Google Play and Firebase"
 
