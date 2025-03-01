@@ -28,13 +28,13 @@ jobs:
             ls -la
             echo "${{secrets.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE_SELENIUM}}"
             echo "${{secrets.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE_NODE}}"
-            docker build -t sachin193959/selenium selenium/Hub/.
-            #docker build -t sachin193959/node selenium/NodeChrome/.
+            #docker build -t sachin193959/selenium selenium/Hub/.
+            docker build -t sachin193959/node selenium/NodeChrome/.
             docker images
             
         - name: push the docker image
           id: push-docker-image
           run: |
-            docker push sachin193959/selenium:latest
-            #docker push sachin193959/node:latest
+            #docker push sachin193959/selenium:latest
+            docker push sachin193959/node:latest
             
