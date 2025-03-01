@@ -26,8 +26,6 @@ jobs:
           id: build-docker-image
           run: |
             ls -la
-            echo ${{env.DOCKER_IMAGE_SELENIUM}}"
-            echo "${{env.DOCKER_IMAGE_NODE}}"
             docker build -t sachin193959/selenium selenium/Hub/.
             docker build -t sachin193959/node selenium/NodeChrome/.
             docker images
