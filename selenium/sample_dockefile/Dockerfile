@@ -29,10 +29,9 @@ ENV GRID_BROWSER_TIMEOUT 0
 ENV GRID_TIMEOUT 30
 # Debug
 ENV GRID_DEBUG false
+ADD https://gist.githubusercontent.com/myaccount/d5203b3e/raw/d8dfcd9fd/generate_config /opt/selenium/generate_config
+ADD https://gist.githubusercontent.com/myaccount/gfsfe2fc/raw/fdefe4e06/entry_point.sh  /opt/bin/entry_point.sh
 
-COPY generate_config \
-    entry_point.sh \
-    /opt/bin/
 # Running this command as sudo just to avoid the message:
 # To run a command as administrator (user "root"), use "sudo <command>". See "man sudo_root" for details.
 # When logging into the container
