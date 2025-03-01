@@ -7,8 +7,10 @@ jobs:
     build:
       name: push docker image to docker hub
       runs-on: ubuntu-latest
+      
       steps:
         - uses: actions/checkout@v2
+        
         - name: login to docker hub
           id: docker-hub
           env:
@@ -16,14 +18,18 @@ jobs:
             password: ${{secrets.DOCKERHUB_PASSWORD}}
             DOCKER_IMAGE_SELENIUM: selenium
             DOCKER_IMAGE_NODE: chrome
+            
           run: |
-            docker login -u $username -p $password 
+            docker login -u $username -p $password
+            
         - name: build the docker image
           id: build-docker-image
           run: |
-            ls -la 
-            docker build . -f selenium/Hub/Dockerfile -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_SELENIUM
-            docker build . -f selenium/NodeChrome/Dockerfile -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_NODE
+            ls -la
+            ehco "${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_SELENIUM"
+            docker build -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_SELENIUM selenium/Hub/.
+            docker build -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_NODE selenium/NodeChrome/.
+            
         - name: push the docker image
           id: push-docker-image
           run: |
