@@ -1,4 +1,4 @@
-name: Build Docker Image
+name: sample Docker Image
 
 env:
   username: ${{secrets.DOCKERHUB_USERNAME}}
