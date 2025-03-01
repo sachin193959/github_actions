@@ -26,15 +26,24 @@ jobs:
           id: build-docker-image
           run: |
             ls -la
-            echo "${{secrets.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE_SELENIUM}}"
-            echo "${{secrets.DOCKERHUB_USERNAME}}/${{env.DOCKER_IMAGE_NODE}}"
-            #docker build -t sachin193959/selenium selenium/Hub/.
+            echo ${{env.DOCKER_IMAGE_SELENIUM}}"
+            echo "${{env.DOCKER_IMAGE_NODE}}"
+            docker build -t sachin193959/selenium selenium/Hub/.
             docker build -t sachin193959/node selenium/NodeChrome/.
             docker images
             
         - name: push the docker image
           id: push-docker-image
           run: |
-            #docker push sachin193959/selenium:latest
+            docker push sachin193959/selenium:latest
             docker push sachin193959/node:latest
+
+        - name: Trivy docker images scanning
+          run: |
+            cd /usr/local/bin
+            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.16.0
+            trivy sachin193959/selenium:latest
+            trivy sachin193959/node:latest
+
+        
             
