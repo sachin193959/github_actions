@@ -22,8 +22,8 @@ jobs:
           id: build-docker-image
           run: |
             ls -la 
-            docker build . -f selenium/Hub/Dockerfile -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_SELENIUM:latest
-            docker build . -f selenium/NodeChrome/Dockerfile -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_NODE:latest
+            docker build . -f selenium/Hub/Dockerfile -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_SELENIUM
+            docker build . -f selenium/NodeChrome/Dockerfile -t ${{secrets.DOCKERHUB_USERNAME}}/$DOCKER_IMAGE_NODE
         - name: push the docker image
           id: push-docker-image
           run: |
