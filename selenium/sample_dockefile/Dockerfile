@@ -38,7 +38,7 @@ COPY generate_config \
 # To run a command as administrator (user "root"), use "sudo <command>". See "man sudo_root" for details.
 # When logging into the container
 RUN chmod a+x /opt/bin/entry_point.sh \
-    && chmod a+x /opt/selenium/generate_config
+    && chmod a+x /opt/bin/generate_config
 RUN /opt/bin/generate_config > /opt/selenium/config.json
 
 CMD ["/opt/bin/entry_point.sh"]
