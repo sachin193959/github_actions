@@ -5,7 +5,7 @@
 FROM selenium/base:3.5.3-boron
 LABEL authors=SeleniumHQ
 
-USER seluser
+USER root
 
 #========================
 # Selenium Configuration
