@@ -5,8 +5,10 @@ env:
   password: ${{secrets.DOCKERHUB_PASSWORD}}
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
+  
 on:
-  workflow_dispatch: 
+  workflow_dispatch:
+  
 jobs:
     build:
       name: push docker image to docker hub
