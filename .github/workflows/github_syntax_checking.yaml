@@ -17,7 +17,7 @@ jobs:
       steps:
         - uses: actions/checkout@v2
           with:
-             repository: sachin193959/HelloWorldMaven@master
+             repository: sachin193959/HelloWorldMaven
 
         - name: ls
           run: ls -ltra
