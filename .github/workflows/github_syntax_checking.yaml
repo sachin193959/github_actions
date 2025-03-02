@@ -1,1 +1,25 @@
+name: sample Docker Image
 
+env:
+  username: ${{secrets.DOCKERHUB_USERNAME}}
+  password: ${{secrets.DOCKERHUB_PASSWORD}}
+  DOCKER_IMAGE_SELENIUM: selenium
+  DOCKER_IMAGE_NODE: chrome
+on:
+  workflow_dispatch: 
+jobs:
+    build:
+      name: push docker image to docker hub
+      runs-on: ubuntu-latest
+      
+      steps:
+        - uses: actions/checkout@v2
+          with:
+             repository: HelloWorldMaven.git
+
+        - name: ls
+          run: ls -ltra
+        
+
+        
+            
