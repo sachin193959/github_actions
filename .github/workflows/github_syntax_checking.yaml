@@ -1,4 +1,4 @@
-name: sample Docker Image
+name: github_action_syntax_checking
 
 env:
   username: ${{secrets.DOCKERHUB_USERNAME}}
