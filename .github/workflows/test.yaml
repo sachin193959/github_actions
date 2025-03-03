@@ -8,9 +8,6 @@ env:
   
 on:        
   workflow_dispatch:
-  push:
-    branches:
-        - test
     
 jobs:
     build:
@@ -19,3 +16,6 @@ jobs:
       
       steps:
         - uses: actions/checkout@v2
+
+        - name: run
+          run: ls -ltra
