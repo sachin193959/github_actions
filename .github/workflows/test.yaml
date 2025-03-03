@@ -1,4 +1,4 @@
-name: manually_trigger
+name: test
 
 env:
   username: ${{secrets.DOCKERHUB_USERNAME}}
