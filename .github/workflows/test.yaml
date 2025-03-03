@@ -8,9 +8,9 @@ env:
   
 on:        
   workflow_dispatch:
-   inputs:
-    evironment:
-      default: "dev"
+  push:
+    branches:
+        - test
     
 jobs:
     build:
