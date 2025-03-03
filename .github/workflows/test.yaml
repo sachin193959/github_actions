@@ -1,0 +1,25 @@
+name: test1
+
+env:
+  username: ${{secrets.DOCKERHUB_USERNAME}}
+  password: ${{secrets.DOCKERHUB_PASSWORD}}
+  DOCKER_IMAGE_SELENIUM: selenium
+  DOCKER_IMAGE_NODE: chrome
+  
+on:
+  push:
+    branches:
+        - test
+        
+  workflow_dispatch:
+   inputs:
+    evironment:
+      default: "dev"
+    
+jobs:
+    build:
+      name: push docker image to docker hub
+      runs-on: ubuntu-latest
+      
+      steps:
+        - uses: actions/checkout@v2
