@@ -6,11 +6,7 @@ env:
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
   
-on:
-  push:
-    branches:
-        - test
-        
+on:        
   workflow_dispatch:
    inputs:
     evironment:
