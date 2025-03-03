@@ -1,4 +1,4 @@
-name: Selenium_Hub_and_Chrome_Build_Docker_Image
+name: manually_trigger
 
 env:
   username: ${{secrets.DOCKERHUB_USERNAME}}
