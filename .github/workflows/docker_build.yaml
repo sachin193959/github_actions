@@ -7,7 +7,7 @@ env:
 on:
   push:
     branches:
-      - devlope
+      - main
 jobs:
     build:
       name: push docker image to docker hub
