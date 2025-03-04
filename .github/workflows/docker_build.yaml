@@ -5,11 +5,8 @@ env:
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
 on:
-  push:
-    branches:
-      - main
   schedule:
-    - cron: '* * * * *'
+    - cron: '*/1 * * * *'
 jobs:
     build:
       name: push docker image to docker hub
