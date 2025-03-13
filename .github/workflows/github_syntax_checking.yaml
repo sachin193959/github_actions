@@ -7,8 +7,7 @@ env:
   DOCKER_IMAGE_NODE: chrome
   
 on:
- schedule:
-   - cron: '* * * * *'
+
 jobs:
     build:
     
