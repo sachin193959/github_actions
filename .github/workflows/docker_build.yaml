@@ -5,7 +5,18 @@ env:
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
 on:
+  schedule:
+    - cron: '1/1 * * * *'
   workflow_dispatch:
+   inputs:
+    num-octocats:
+     description: 'Number of Octocats'
+     required: false
+     default: '1'
+    octocat-eye-color:
+      description: 'Eye color of the Octocats'
+      required: true
+       
 jobs:
     build:
       name: push docker image to docker hub
