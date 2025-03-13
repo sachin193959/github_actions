@@ -36,7 +36,7 @@ jobs:
           run: |
             ls -la
             echo "${{num}}"
-            echo "{{oct}}
+            echo "${{oct}}
             echo "$username/$DOCKER_IMAGE_SELENIUM"
             echo "$username/$DOCKER_IMAGE_NODE"
             docker build -t $username/$DOCKER_IMAGE_SELENIUM docker/Hub/.
