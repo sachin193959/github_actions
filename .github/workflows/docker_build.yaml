@@ -10,11 +10,11 @@ on:
     
   workflow_dispatch:
    inputs:
-    num-octocats:
+    num:
      description: 'Number of Octocats'
      required: false
      default: '1'
-    octocat-eye-color:
+    oct:
       description: 'Eye color of the Octocats'
       default: '2'
 jobs:
@@ -35,6 +35,8 @@ jobs:
           id: build-docker-image
           run: |
             ls -la
+            echo "${{num}}"
+            echo "{{oct}}
             echo "$username/$DOCKER_IMAGE_SELENIUM"
             echo "$username/$DOCKER_IMAGE_NODE"
             docker build -t $username/$DOCKER_IMAGE_SELENIUM docker/Hub/.
