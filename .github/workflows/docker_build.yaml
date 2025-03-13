@@ -12,11 +12,13 @@ on:
    inputs:
     num:
      description: 'Number of Octocats'
-     required: false
+     required: true
      default: '3'
     oct:
       description: 'Eye color of the Octocats'
       default: '4'
+      required: true
+
 jobs:
     build:
       name: push docker image to docker hub
