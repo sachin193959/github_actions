@@ -15,7 +15,7 @@ on:
      default: '1'
     octocat-eye-color:
       description: 'Eye color of the Octocats'
-      required: true
+      default: '2'
        
 jobs:
     build:
