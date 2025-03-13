@@ -1,4 +1,4 @@
-name: Docker image build
+name: EVRY 2 MIn
 env:
   username: ${{secrets.DOCKERHUB_USERNAME}}
   password: ${{secrets.DOCKERHUB_PASSWORD}}
