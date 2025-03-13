@@ -7,7 +7,16 @@ env:
 on:
   schedule:
     - cron: '1/1 * * * *'
-  workflow_dispatch:       
+    
+  workflow_dispatch:
+   inputs:
+    num-octocats:
+     description: 'Number of Octocats'
+     required: false
+     default: '1'
+    octocat-eye-color:
+      description: 'Eye color of the Octocats'
+      default: '2'
 jobs:
     build:
       name: push docker image to docker hub
