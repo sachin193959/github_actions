@@ -1,17 +1,13 @@
-name: new
-
+name: evry 1 min
 env:
   username: ${{secrets.DOCKERHUB_USERNAME}}
   password: ${{secrets.DOCKERHUB_PASSWORD}}
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
-  
-on:        
+on:
+  schedule:
+    - cron: '1/1 * * * *'
   workflow_dispatch:
-  push:
-    branches:
-        - test
-    
 jobs:
     build:
       name: push docker image to docker hub
@@ -19,3 +15,31 @@ jobs:
       
       steps:
         - uses: actions/checkout@v2
+        
+        - name: login to docker hub
+          id: docker-hub
+            
+          run: |
+            docker login -u $username -p $password
+            
+        - name: build the docker image
+          id: build-docker-image
+          run: |
+            ls -la
+            echo "$username/$DOCKER_IMAGE_SELENIUM"
+            echo "$username/$DOCKER_IMAGE_NODE"
+            docker build -t $username/$DOCKER_IMAGE_SELENIUM docker/Hub/.
+            docker build -t $username/$DOCKER_IMAGE_NODE docker/NodeChrome/.
+            docker images
+            
+        - name: push the docker image
+          id: push-docker-image
+          run: |
+            docker push $username/$DOCKER_IMAGE_SELENIUM:latest
+            docker push $username/$DOCKER_IMAGE_NODE:latest
+        - name: Trivy docker images scanning
+          run: |
+            cd /usr/local/bin
+            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.16.0
+            trivy $username/$DOCKER_IMAGE_SELENIUM:latest
+            trivy $username/$DOCKER_IMAGE_NODE:latest
