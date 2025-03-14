@@ -5,8 +5,7 @@ env:
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
 on:
-  schedule:
-    - cron: '* * * * *'
+
     
   workflow_dispatch:
    inputs:
