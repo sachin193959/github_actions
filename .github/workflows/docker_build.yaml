@@ -4,6 +4,9 @@ env:
   password: ${{secrets.DOCKERHUB_PASSWORD}}
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
+  RUNN: ubuntu-latest
+  
+  
 on:
 
     
@@ -21,7 +24,7 @@ on:
 jobs:
     build:
       name: push docker image to docker hub
-      runs-on: ubuntu-latest
+      runs-on: $RUNN
       
       steps:
         - uses: actions/checkout@v2
