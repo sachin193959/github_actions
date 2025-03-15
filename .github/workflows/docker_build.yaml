@@ -33,7 +33,7 @@ jobs:
           id: docker-hub           
           run: |
             docker login -u $username -p $password
-            echo ${{ en.RUNN }}
+            echo ${{ env.RUNN }}
             
             
         - name: build the docker image
