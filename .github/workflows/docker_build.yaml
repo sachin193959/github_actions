@@ -24,7 +24,7 @@ on:
 jobs:
     build:
       name: push docker image to docker hub
-      runs-on: "${{env.RUNN}}"
+      runs-on: ${{env.RUNN}}
       
       steps:
         - uses: actions/checkout@v2
