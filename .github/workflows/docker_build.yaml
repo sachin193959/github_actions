@@ -23,7 +23,7 @@ jobs:
           if: env.ENN == 'dev'
           run: |
             docker login -u $username -p $password
-            echo ${{ env.runn }}
+            echo ${{ env.RUNN }}
             
             
         - name: build the docker image
