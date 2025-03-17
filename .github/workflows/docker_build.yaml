@@ -13,15 +13,13 @@ on:
 jobs:
     build:
       name: push docker image to docker hub
-      runs-on:
-         group: ${{ env.RUNN }}
+      runs-on: ubuntu-latest
       
       steps:
         - uses: actions/checkout@v2
         
         - name: login to docker hub
           if: ${{ $ENN == 'dev'}}
-          id: docker-hub           
           run: |
             docker login -u $username -p $password
             echo ${{ env.RUNN }}
