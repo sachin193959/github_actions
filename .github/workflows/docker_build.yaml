@@ -19,7 +19,7 @@ jobs:
         - uses: actions/checkout@v2
         
         - name: login to docker hub
-          if: ${{ ${{env.ENN}} == 'dev'}}
+          if: ${{ '${{ env.ENN }}' == 'dev'}}
           run: |
             docker login -u $username -p $password
             echo ${{ env.RUNN }}
