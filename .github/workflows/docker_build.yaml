@@ -5,31 +5,22 @@ env:
   DOCKER_IMAGE_SELENIUM: selenium
   DOCKER_IMAGE_NODE: chrome
   RUNN: ubuntu-latest
+  ENN: dev
   
-  
-on:
-
-    
+on:    
   workflow_dispatch:
-   inputs:
-    num:
-     description: 'Number of Octocats'
-     required: true
-     default: '3'
-    oct:
-      description: 'Eye color of the Octocats'
-      default: '4'
-      required: true
 
 jobs:
     build:
       name: push docker image to docker hub
-      runs-on: ubuntu-latest
+      runs-on:
+         group: ${{ env.RUNN }}
       
       steps:
         - uses: actions/checkout@v2
         
         - name: login to docker hub
+          if: ${{ $ENN == 'dev'}}
           id: docker-hub           
           run: |
             docker login -u $username -p $password
@@ -44,19 +35,5 @@ jobs:
             echo "1"
             echo "$username/$DOCKER_IMAGE_SELENIUM"
             echo "$username/$DOCKER_IMAGE_NODE"
-            docker build -t $username/$DOCKER_IMAGE_SELENIUM docker/Hub/.
-            docker build -t $username/$DOCKER_IMAGE_NODE docker/NodeChrome/.
             docker images
             
-        - name: push the docker image
-          id: push-docker-image
-          run: |
-            docker push $username/$DOCKER_IMAGE_SELENIUM:latest
-            docker push $username/$DOCKER_IMAGE_NODE:latest
-
-        - name: Trivy docker images scanning
-          run: |
-            cd /usr/local/bin
-            curl -sfL https://raw.githubusercontent.com/aquasecurity/trivy/main/contrib/install.sh | sh -s -- -b /usr/local/bin v0.16.0
-            trivy $username/$DOCKER_IMAGE_SELENIUM:latest
-            trivy $username/$DOCKER_IMAGE_NODE:latest
