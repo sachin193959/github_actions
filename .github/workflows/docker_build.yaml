@@ -20,10 +20,10 @@ jobs:
         
         - name: login to docker hub
           id: docker-hub
-          if: env.ENN == 'dev'
+          if: dev == 'dev'
           run: |
             docker login -u $username -p $password
-            echo ${{ env.RUNN }}
+            echo "RUNN=${{ env.RUNN }}" >> $GITHUB_ENV
             
             
         - name: build the docker image
