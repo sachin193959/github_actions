@@ -20,7 +20,6 @@ jobs:
         
         - name: login to docker hub
           id: docker-hub
-          if: ${{ '${{ env.ENN }}' == 'dev'}}
           run: |
             docker login -u $username -p $password
             echo ${{ env.RUNN }}
